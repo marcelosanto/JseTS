@@ -22,7 +22,7 @@ export function squareOf(x: any) {
 }
 
 const squareOfTwoNumber = squareOf(2)
-const squareOfTwoString = squareOf('2')
+//const squareOfTwoString = squareOf('2')
 
 if (typeof squareOfTwoNumber === null) {
   console.log('Conta inválida')
