@@ -1,0 +1,1 @@
+areOfTwoNumber = squareOf(2)
