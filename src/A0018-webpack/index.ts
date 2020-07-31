@@ -1,3 +1,1 @@
-import './mod'
-
-console.log('Olá mundo!')
+import './form-control'
