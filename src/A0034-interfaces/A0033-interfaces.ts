@@ -7,7 +7,7 @@ interface TipoSobrenome {
 }
 
 interface TipoNomeCompleto {
-  nomeCompleto: () => string
+  nomeCompleto(): string
 }
 
 // type alias => não tem restrição, pode fazer o que quiser.
