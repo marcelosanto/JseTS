@@ -1,3 +1,5 @@
+// Inversão de dependência
+
 export class Escritor {
   private _ferramenta: Ferramenta | null = null
 
@@ -54,4 +56,6 @@ const maquinaEscrever = new MaquinaEscrever('Maquina')
 // console.log(maquinaEscrever.nome)
 
 escritor.ferramenta = caneta
+escritor.ferramenta = maquinaEscrever
+escritor.ferramenta = null
 escritor.escrever()
