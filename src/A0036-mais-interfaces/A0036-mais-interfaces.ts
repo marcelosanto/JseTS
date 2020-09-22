@@ -1,19 +1,31 @@
-// declaration merge
-
-interface Pessoal {
-  nome: string
+export function add(a: unknown, b: unknown): number | string {
+  return typeof a === 'number' && typeof b === 'number' ? a + b : `${a}${b}`
 }
 
-interface Pessoal {
-  readonly sobrenome: string
-  readonly enderecos: readonly string[]
-  idade?: number
+console.log(add(1, 5))
+console.log(add('a', 'b'))
+
+type Pessoa = { tipo: 'pessoa'; nome: string }
+type Animal = { tipo: 'animal'; cor: string }
+type PessoaOuAnimal = Pessoa | Animal
+
+export class Aluno implements Pessoa {
+  tipo: 'pessoa' = 'pessoa'
+  constructor(public nome: string) {}
 }
 
-const pessoal: Pessoal = {
-  nome: 'Marcelo',
-  sobrenome: 'Santos',
-  enderecos: ['Rua Capivary'],
+function mostraNome(obj: PessoaOuAnimal): void {
+  //if ('nome' in obj) console.log(obj.nome)
+  //if (obj instanceof Aluno) console.log(obj.nome)
+  switch (obj.tipo) {
+    case 'pessoa':
+      console.log(obj.nome)
+      return
+    case 'animal':
+      console.log('É um animal', obj.cor)
+      return
+  }
 }
 
-console.log(pessoal)
+mostraNome(new Aluno('Gabriel'))
+mostraNome({ tipo: 'animal', cor: 'Roxo' })
