@@ -1,14 +1,47 @@
-type ObterChaveFn = <o, k extends keyof o>(object: o, chave: k) => o[k]
-
-const obterChave: ObterChaveFn = (objeto, chave) => objeto[chave]
-
-const animal = {
-  cor: 'Rosa',
-  vacinas: ['Vacina 1', 'Vacina 2'],
-  idade: 16,
+export class Pessoa<T, U> {
+  constructor(public name: T, public idade: U) {}
 }
 
-const vacinas = obterChave(animal, 'vacinas')
-const cor = obterChave(animal, 'cor')
+export class Pilha<T> {
+  private contador = 0
+  private elementos: { [k: number]: T } = {}
 
-console.log(vacinas, cor, obterChave(animal, 'idade'))
+  push(elemento: T): void {
+    this.elementos[this.contador] = elemento
+    this.contador++
+  }
+
+  pop(): T | void {
+    if (this.estaVazia()) return undefined
+
+    this.contador--
+    const elemento = this.elementos[this.contador]
+    delete this.elementos[this.contador]
+    return elemento
+  }
+
+  estaVazia(): boolean {
+    return this.contador === 0
+  }
+
+  tamanho(): number {
+    return this.contador
+  }
+
+  mostrarPilha(): void {
+    for (const chave in this.elementos) {
+      console.log(this.elementos[chave])
+    }
+  }
+}
+
+const pilha = new Pilha<number | string>()
+pilha.push(1)
+pilha.push(2)
+pilha.push(3)
+pilha.push(4)
+pilha.push('string')
+
+while (!pilha.estaVazia()) {
+  console.log(pilha.pop())
+}
