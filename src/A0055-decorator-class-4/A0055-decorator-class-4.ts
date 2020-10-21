@@ -24,11 +24,14 @@ function inverteNomeECor(param1: string, param2: string) {
   }
 }
 
-function outroDecorador(target: Constructor) {
-  console.log('Sou o  decorador')
+function outroDecorador(param1: string) {
+  return function (target: Constructor) {
+    console.log('Sou o outro decorador ' + param1)
+    return target
+  }
 }
 
-@outroDecorador
+@outroDecorador('o parametro do outro decorador')
 @inverteNomeECor('valor1', 'valor2') // é chamado na criação da classe
 export class Animal {
   constructor(public nome: string, public cor: string) {
