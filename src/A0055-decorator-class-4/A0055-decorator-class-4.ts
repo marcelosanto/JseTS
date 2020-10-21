@@ -1,6 +1,10 @@
+interface Constructor {
+  new (...args: any[]): any
+}
+
 function inverteNomeECor(param1: string, param2: string) {
   // Closure
-  return function <T extends new (...args: any[]) => any>(target: T): T {
+  return function <T extends Constructor>(target: T): T {
     console.log('Sou o decorador e recebi', target)
 
     return class extends target {
@@ -20,6 +24,11 @@ function inverteNomeECor(param1: string, param2: string) {
   }
 }
 
+function outroDecorador(target: Constructor) {
+  console.log('Sou o  decorador')
+}
+
+@outroDecorador
 @inverteNomeECor('valor1', 'valor2') // é chamado na criação da classe
 export class Animal {
   constructor(public nome: string, public cor: string) {
