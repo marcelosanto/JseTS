@@ -1,37 +1,26 @@
 function decorador(
   classPrototype: any,
-  nome: string | symbol,
+  nomeMetodo: string | symbol,
+  index: number,
 ): any {
-  let valorPropiedade: any
-
-  return {
-    get: () => valorPropiedade,
-    set: (valor: any) => {
-      if (typeof valor === 'string') {
-        valorPropiedade = valor.split('').reverse().join('')
-        return
-      }
-      valorPropiedade = valor
-    }
-  }
+  console.log(classPrototype)
+  console.log(nomeMetodo)
+  console.log(index)
 }
 
 export class UmaPessoa {
-  @decorador
   nome: string
-  @decorador
   sobrenome: string
-  @decorador
   idade: number
 
-  constructor(nome: string, sobrenome: string,idade: number) {
+  constructor(@decorador nome: string, @decorador sobrenome: string,@decorador idade: number) {
     this.nome = nome
     this.sobrenome = sobrenome
     this.idade = idade
   }
 
 
-  metodo(msg: string): string {
+  metodo(@decorador msg: string): string {
     return `${this.nome} ${this.sobrenome}: ${msg}`
   }
 
