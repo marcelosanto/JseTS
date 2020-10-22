@@ -1,7 +1,4 @@
-function decorador(
-  classPrototype: any,
-  nome: string | symbol,
-): any {
+function decorador(classPrototype: any, nome: string | symbol): any {
   let valorPropiedade: any
 
   return {
@@ -12,7 +9,7 @@ function decorador(
         return
       }
       valorPropiedade = valor
-    }
+    },
   }
 }
 
@@ -24,12 +21,11 @@ export class UmaPessoa {
   @decorador
   idade: number
 
-  constructor(nome: string, sobrenome: string,idade: number) {
+  constructor(nome: string, sobrenome: string, idade: number) {
     this.nome = nome
     this.sobrenome = sobrenome
     this.idade = idade
   }
-
 
   metodo(msg: string): string {
     return `${this.nome} ${this.sobrenome}: ${msg}`
