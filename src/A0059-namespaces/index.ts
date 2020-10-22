@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/triple-slash-reference */
-
 /// <reference path='module.ts' />
 
-console.warn(MeuNamespace.nomeDoNamespace)
+console.log(MeuNamespace.nomeDoNamespace)
